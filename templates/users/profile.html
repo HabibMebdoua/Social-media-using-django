@@ -1,0 +1,15 @@
+{% load static %}
+
+
+<h1>Profile {{profile.user.username}}</h1>
+<img src="{{ profile.profile_img.url }}" alt="" width="20%">
+<br>
+<a href="{% url 'follow' profile.id %}">
+	{% if request.user in profile.follower.all %}
+		Unfollow
+	{% else %}
+		Follow
+	{% endif %}
+</a>
+<p>Posts : {{profile.user.posts.count}}</p>
+<p>Followers : {{profile.follower_num}}</p>
